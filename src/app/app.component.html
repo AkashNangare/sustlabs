@@ -1,0 +1,21 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+       Hour
+      </th>
+      <th *ngFor="let hour of  dataArr[0].hours;index as i">
+        {{i%2==0?i:""}}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ele of dataArr">
+      <th >{{ele.day.slice(6)}}th</th>
+      <ng-container *ngFor="let hour of ele.hours;index as i">
+          <td colspan="1" class="border border-dark" [ngClass]="{'bg-dark':hour.record_count==0 , 'bg-success':hour.record_count!=0}" [style.opacity]="calOpacity(hour.record_count)">
+          </td> 
+      </ng-container>
+     
+  </tbody>
+</table>
